@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:background="#235A8C"
+        android:minHeight="?actionBarSize"
+        android:theme="?actionBarTheme">
+
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginEnd="12dp"
+            android:backgroundTint="@color/white"
+            android:color="@color/white"
+            android:onClick="createCustomer"
+            android:text="Ajouter patient" />
+
+        <!--<Button
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginEnd="12dp"
+            android:backgroundTint="@color/white"
+            android:color="@color/white"
+            android:onClick="createTransfo"
+            android:text="Ajouter transfo" />-->
+    </androidx.appcompat.widget.Toolbar>
+
+    <ListView
+        android:id="@+id/customerListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="3dp"
+        android:dividerHeight="3dp" />
+
+</LinearLayout>
