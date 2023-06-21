@@ -32,17 +32,18 @@ public class CustomerAdapter extends ArrayAdapter<Customer> {
         prenom.setText(customer.getFirst_name());
         nom.setText(customer.getLast_name());
 
-        View view = convertView;
-        /*Button addTransformationBtn = (Button) view.findViewById(R.id.addTransformation);
+        Button addTransformationBtn = (Button) convertView.findViewById(R.id.addTransformation);
 
         addTransformationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent cameraIntent = new Intent(v.getContext(), CameraActivity.class);
+                cameraIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 v.getContext().startActivity(cameraIntent);
             }
-        });*/
+        });
 
         return convertView;
     }
+
 }

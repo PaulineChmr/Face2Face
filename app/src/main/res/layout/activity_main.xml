@@ -24,7 +24,7 @@
             android:onClick="createCustomer"
             android:text="Ajouter patient" />
 
-        <Button
+        <!--<Button
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
@@ -32,7 +32,7 @@
             android:backgroundTint="@color/white"
             android:color="@color/white"
             android:onClick="createTransfo"
-            android:text="Ajouter transfo" />
+            android:text="Ajouter transfo" />-->
     </androidx.appcompat.widget.Toolbar>
 
     <ListView

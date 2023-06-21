@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         customerListView = findViewById(R.id.customerListView);
         loadFromDBToMemory();
         setCustomerAdapter();
-        setOnClickListener();
+        //setOnClickListener();
     }
 
     private void loadFromDBToMemory() {
@@ -37,12 +37,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(newCustomerIntent);
     }
 
-    public void createTransfo(View view){
-        Intent cameraIntent = new Intent(view.getContext(), CameraActivity.class);
-        view.getContext().startActivity(cameraIntent);
-    }
-
-    private void setOnClickListener() {
+    /*private void setOnClickListener() {
         customerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
@@ -52,6 +47,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(editCustomerIntent);
             }
         });
-    }
+    }*/
 
 }
