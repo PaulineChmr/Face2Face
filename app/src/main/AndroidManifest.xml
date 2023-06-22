@@ -21,7 +21,9 @@
         android:theme="@style/Theme.Face2Face"
         tools:targetApi="31" >
         <activity
-            android:name=".CameraActivity"
+            android:name=".CameraActivity" />
+        <activity
+            android:name=".CustomerAdapter"
             android:exported="false"
             android:label="@string/title_activity_camera"
             android:theme="@style/Theme.Face2Face" />

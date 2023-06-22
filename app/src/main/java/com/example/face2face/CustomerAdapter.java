@@ -1,22 +1,32 @@
 package com.example.face2face;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import java.util.List;
 
 public class CustomerAdapter extends ArrayAdapter<Customer> {
+    private Context context;
     public CustomerAdapter(Context context, List<Customer> customers) {
         super(context, 0, customers);
+        this.context = context;
     }
 
     @NonNull
@@ -32,18 +42,37 @@ public class CustomerAdapter extends ArrayAdapter<Customer> {
         prenom.setText(customer.getFirst_name());
         nom.setText(customer.getLast_name());
 
-        Button addTransformationBtn = (Button) convertView.findViewById(R.id.addTransformation);
+        ImageButton beforeButton = (ImageButton) convertView.findViewById(R.id.beforeButton);
+        ImageButton afterButton = (ImageButton) convertView.findViewById(R.id.afterButton);
 
-        addTransformationBtn.setOnClickListener(new View.OnClickListener() {
+        beforeButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent cameraIntent = new Intent(v.getContext(), CameraActivity.class);
-                cameraIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                v.getContext().startActivity(cameraIntent);
+                if (ContextCompat.checkSelfPermission(context, android.Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions((Activity) context, new String[]{
+                            Manifest.permission.CAMERA
+                    }, 100);
+                }
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+
             }
         });
 
+        afterButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);cd C/UnknownError
+                context.startActivity(intent);
+            }
+        });
+
+
         return convertView;
     }
+
 
 }
