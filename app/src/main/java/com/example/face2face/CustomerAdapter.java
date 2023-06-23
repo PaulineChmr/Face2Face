@@ -23,10 +23,10 @@ import androidx.core.content.ContextCompat;
 import java.util.List;
 
 public class CustomerAdapter extends ArrayAdapter<Customer> {
-    private Context context;
+    private Context adContext;
     public CustomerAdapter(Context context, List<Customer> customers) {
         super(context, 0, customers);
-        this.context = context;
+        adContext = context;
     }
 
     @NonNull
@@ -48,15 +48,15 @@ public class CustomerAdapter extends ArrayAdapter<Customer> {
         beforeButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (ContextCompat.checkSelfPermission(context, android.Manifest.permission.CAMERA)
+                if (ContextCompat.checkSelfPermission(adContext, android.Manifest.permission.CAMERA)
                         != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions((Activity) context, new String[]{
+                    ActivityCompat.requestPermissions((Activity) adContext, new String[]{
                             Manifest.permission.CAMERA
                     }, 100);
                 }
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
+                ((Activity) adContext).startActivityForResult(intent, 100);
 
             }
         });
@@ -65,14 +65,12 @@ public class CustomerAdapter extends ArrayAdapter<Customer> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);cd C/UnknownError
-                context.startActivity(intent);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                ((Activity) adContext).startActivityForResult(intent, 200);
             }
         });
 
-
         return convertView;
     }
-
 
 }
