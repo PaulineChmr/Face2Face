@@ -32,6 +32,7 @@
         android:layout_height="57dp"
         android:translationX="45dp"
         android:translationY="10dp"
+        android:contentDescription="before button"
         app:srcCompat="@mipmap/ic_launcher_round" />
 
     <ImageButton
@@ -40,6 +41,7 @@
         android:layout_height="57dp"
         android:translationX="300dp"
         android:translationY="10dp"
+        android:contentDescription="after button"
         app:srcCompat="@mipmap/ic_launcher" />
 
 

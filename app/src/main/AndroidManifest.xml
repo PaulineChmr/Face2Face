@@ -42,7 +42,7 @@
             android:name=".AddCustomerSheet"
             android:exported="false" />
         <provider
-            android:authorities="${applicationId}.provider"
+            android:authorities="com.example.face2face.provider"
             android:name="androidx.core.content.FileProvider"
             android:exported="false"
             android:grantUriPermissions="true">

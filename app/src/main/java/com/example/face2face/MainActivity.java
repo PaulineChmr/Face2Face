@@ -1,9 +1,16 @@
 package com.example.face2face;
 
+import static android.content.ContentValues.TAG;
+
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -48,5 +55,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }*/
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        CustomerAdapter.onActivityResult(requestCode, resultCode, data);
+        /*super.onActivityResult(requestCode, resultCode, data);*/
+        Log.i(TAG, String.valueOf(resultCode));
+        if (resultCode == RESULT_OK) {
+            Bitmap image = (Bitmap) data.getExtras().get("data");
+            MediaStore.Images.Media.insertImage(getContentResolver(), image, String.valueOf(requestCode), "description");
+        }
+        else{
+            Log.i(TAG, "pas sauvegardé");
+        }
+    }
 
 }
